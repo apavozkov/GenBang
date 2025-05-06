@@ -29,7 +29,7 @@ GenBang/ <br>
 Производится из корневой директории проекта
 
 ### mutoslav.clj
-clojure -M -m genotype-mutator.mutoslav \"[-3 -1 -7 0 -5 0 0 0 -9 0 3 7 1 -3 0 10]\" 
+clojure -M -m genotype-mutator.mutoslav \"[-3 -1 -7 0 -5 0 0 0 -9 0 3 7 1 -3 0 10]\" <br>
 (вектор как пример) (обязательны двойные кавычки)
 
 ### gennadiy.clj
