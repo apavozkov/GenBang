@@ -4,14 +4,14 @@
 Сделать такую структуру требует сам clojure. Я пытался сделать кастом, но оно отказывается работать. В наименованиях директорий надо использовать "_" тк clojure преобразует их в "-" в namespace.
 В итоге:
 
-GenBang/
-├── src/
-│   └── genotype_mutator/
-│       └── mutoslav.clj
-│   └── genotype_generator/
-│       └── gennadiy.clj
-└── deps.edn
-└── limits.edn
+GenBang/ <br>
+├── src/ <br>
+│   └── genotype_mutator/ <br>
+│       └── mutoslav.clj <br>
+│   └── genotype_generator/ <br>
+│       └── gennadiy.clj <br>
+└── deps.edn <br>
+└── limits.edn <br>
 
 ##### gennadiy.clj
 Генератор изначального генотипа
