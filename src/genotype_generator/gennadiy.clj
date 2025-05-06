@@ -1,4 +1,4 @@
-(ns genotype-generator.core
+(ns genotype-generator.gennadiy
   (:require [clojure.edn :as edn]))
 
 (defn read-constraints [filename]
@@ -18,5 +18,3 @@
       (println "Ошибка: требуется ровно 16 пар чисел")
       (System/exit 1))
     (println (vec (map generate-number constraints)))))
-
-(-main)
