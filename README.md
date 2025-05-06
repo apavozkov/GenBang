@@ -7,7 +7,7 @@
 GenBang/ <br>
 ├── src/ <br>
 │   └── genotype_mutator/ <br>
-│  &nbsp└── mutoslav.clj <br>
+│ &nbsp └── mutoslav.clj <br>
 │   └── genotype_generator/ <br>
 │       └── gennadiy.clj <br>
 └── deps.edn <br>
