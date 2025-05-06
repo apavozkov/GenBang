@@ -13,24 +13,27 @@ GenBang/ <br>
 └── deps.edn <br>
 └── limits.edn <br>
 
-#### gennadiy.clj
+### gennadiy.clj
 Генератор изначального генотипа
 
-#### mutoslav.clj
+### mutoslav.clj
 Генератор мутаций
 
-#### limits.edn
+### limits.edn
 Файл с ограничениями для каждого гена
 
-#### deps.edn
+### deps.edn
 Конфиг файл
 
 ## Запуск
 Производится из корневой директории проекта
 
-mutoslav.clj - clojure -M -m genotype-mutator.mutoslav \"[-3 -1 -7 0 -5 0 0 0 -9 0 3 7 1 -3 0 10]\" (вектор как пример) (обязательны двойные кавычки)
+### mutoslav.clj
+clojure -M -m genotype-mutator.mutoslav \"[-3 -1 -7 0 -5 0 0 0 -9 0 3 7 1 -3 0 10]\" 
+(вектор как пример) (обязательны двойные кавычки)
 
-gennadiy.clj - clojure -M -m genotype-generator.gennadiy
+### gennadiy.clj
+clojure -M -m genotype-generator.gennadiy
 
 ## Вывод
 
