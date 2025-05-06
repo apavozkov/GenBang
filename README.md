@@ -6,10 +6,10 @@
 
 GenBang/ <br>
 ├── src/ <br>
-│   └── genotype_mutator/ <br>
-│&emsp;&emsp;&emsp;└── mutoslav.clj <br>
-│   └── genotype_generator/ <br>
-│&emsp;&emsp;&emsp;└── gennadiy.clj <br>
+│&emsp;&emsp;└── genotype_mutator/ <br>
+│&emsp;&emsp;&emsp;&emsp;&emsp;└── mutoslav.clj <br>
+│&emsp;&emsp;└── genotype_generator/ <br>
+│&emsp;&emsp;&emsp;&emsp;&emsp;└── gennadiy.clj <br>
 └── deps.edn <br>
 └── limits.edn <br>
 
