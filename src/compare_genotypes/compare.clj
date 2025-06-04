@@ -19,6 +19,8 @@
 
 (defn get-euclid-distance  [generated target]
     (let [width  (.getWidth generated) height (.getHeight generated) result (atom 0)]
+        (assert (= (.getWidth generated) (.getWidth target)) "Please use pictures of equal sizes")
+        (assert (= (.getHeight generated) (.getHeight target)) "Please use pictures of equal sizes")
         (doseq [ x (range width) y (range height)]
             (swap! result + (math/pow (/ (- (.getRGB generated x y) (.getRGB target x y)) 16777215) 2))
         )               
