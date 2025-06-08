@@ -107,4 +107,5 @@
     (save-image image "biomorph.png")
     (println "Генотип:" genotype)
     (println "Биоморфа сохранена в biomorph.png")
-    (System/exit 0)))
+;    (System/exit 0)
+))

@@ -13,8 +13,10 @@
   (+ min (rand-int (inc (- max min)))))
 
 (defn -main []
-  (let [constraints (read-constraints "limits.edn")]
+  (let [constraints (read-constraints "limits.edn")
+      genotype (vec (map generate-number constraints))]
     (when (not= 16 (count constraints))
       (println "Ошибка: требуется ровно 16 пар чисел")
       (System/exit 1))
-    (println (vec (map generate-number constraints)))))
+    (println genotype) ; вывод генотипа
+    genotype)) ; возврат значения 

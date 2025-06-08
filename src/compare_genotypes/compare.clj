@@ -38,6 +38,8 @@
     (System/exit 1))
 
   (let [generated (read-image (str (first args)))
-        target (read-image (str (second args)))]
-    (println (get-euclid-distance  generated target))
-    (System/exit 0)))
+        target (read-image (str (second args)))
+        euclid-distance (get-euclid-distance  generated target)]
+    (println euclid-distance)
+;    (System/exit 0)
+euclid-distance))
