@@ -34,7 +34,7 @@
   (let [best (apply min-key :distance evaluations)] ; выбираем вариант с минимальным расстоянием
     (println "\nРезультаты текущей итерации:")
     (doseq [{:keys [image distance]} (sort-by :distance evaluations)] ; сортируем по расстоянию
-      (println (format "  %s - расстояние: %.2f" 
+      (println (format "  %s - расстояние: %.3f" 
                       (.getName (io/file image)) 
                       distance)))
     best)) ; возвращаем лучший вариант
@@ -51,7 +51,9 @@
            current-genotypes (repeatedly num-genotypes gena/-main) ; начальные генотипы
            best-distance Double/MAX_VALUE ; лучшее расстояние
            best-genotype nil ; лучший генотип
-           best-image nil] ; лучшее изображение
+           best-image nil ; лучшее изображение
+           previous-distance Double/MAX_VALUE ; хранение предыдущего расстояния
+           previous-genotype nil] ; и предыдущего генотипа
       
       ;; Выводим информацию о текущей итерации
       (println (format "\n=== Итерация %d === (Застой: %d/%d)" 
@@ -60,7 +62,7 @@
       ;; Генерируем и оцениваем изображения
       (let [evaluations (generate-images current-genotypes iteration)
             {:keys [genotype image distance] :as best} (find-best evaluations)]
-        
+               
         ;; Выводим лучший результат итерации
         (println "\n🏆 Лучший в этой итерации:")
         (println (format "  Изображение: %s" (.getName (io/file image))))
@@ -90,14 +92,30 @@
                     (repeatedly num-genotypes #(mutya/-main (pr-str genotype))) ; мутируем лучший генотип
                     distance  ; новое лучшее расстояние
                     genotype  ; новый лучший генотип
-                    image))   ; новое лучшее изображение
+                    image   ; новое лучшее изображение
+                    best-distance ; предыдущее лучшее расстояние
+                    best-genotype ; и предыдущий лучший генотип
+            ))
 
         ;; 4. Улучшений нет
         :else
-        (do (println "\n➡ Улучшений нет. Мутирую последний лучший генотип...")
-            (recur (inc iteration)
-                    (inc stagnant-count) ; увеличиваем счётчик застоя
-                    (repeatedly num-genotypes #(mutya/-main (pr-str best-genotype))) ; мутируем предыдущий лучший
-                    best-distance
-                    best-genotype
-                    best-image)))))))
+;        (do (println "\n➡ Улучшений нет. Мутирую последний лучший генотип...")
+;            (recur (inc iteration)
+;                    (inc stagnant-count) ; увеличиваем счётчик застоя
+;                    (repeatedly num-genotypes #(mutya/-main (pr-str best-genotype))) ; мутируем предыдущий лучший
+;                    best-distance
+;                    best-genotype
+;                    best-image)))))))
+        (let [best-of-two (if (< previous-distance distance)
+        previous-genotype
+        genotype)]
+        (println (format "\n➡Улучшений нет. Мутирую лучший из 2 последних поколений: %.2f..."
+        (min previous-distance distance)))
+          (recur (inc iteration)
+                  (inc stagnant-count)
+                  (repeatedly num-genotypes #(mutya/-main (pr-str best-of-two)))
+                  best-distance
+                  best-genotype
+                  best-image
+                  distance ; текущее становится предыдущим
+                  genotype))))))) ; текущий становится предыдущим
