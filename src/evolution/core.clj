@@ -66,7 +66,7 @@
         ;; Выводим лучший результат итерации
         (println "\n🏆 Лучший в этой итерации:")
         (println (format "  Изображение: %s" (.getName (io/file image))))
-        (println (format "  Расстояние: %.2f" distance))
+        (println (format "  Расстояние: %.3f" distance))
         (println (format "  Генотип: %s" (pr-str genotype)))
         
         ;; Проверяем условия:
@@ -86,7 +86,7 @@
         
         ;; 3. Нашли улучшение
         (< distance best-distance)
-        (do (println (format "\n✨ Улучшение найдено! (Предыдущий лучший: %.2f)" best-distance))
+        (do (println (format "\n✨ Улучшение найдено! (Предыдущий лучший: %.3f)" best-distance))
             (recur (inc iteration) ; новая итерация
                     0 ; сбрасываем счётчик застоя
                     (repeatedly num-genotypes #(mutya/-main (pr-str genotype))) ; мутируем лучший генотип
@@ -109,7 +109,7 @@
         (let [best-of-two (if (< previous-distance distance)
         previous-genotype
         genotype)]
-        (println (format "\n➡Улучшений нет. Мутирую лучший из 2 последних поколений: %.2f..."
+        (println (format "\n➡Улучшений нет. Мутирую лучший из 2 последних поколений: %.3f..."
         (min previous-distance distance)))
           (recur (inc iteration)
                   (inc stagnant-count)
